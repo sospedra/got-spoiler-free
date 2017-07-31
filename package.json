@@ -1,0 +1,17 @@
+{
+  "name": "got-spoiler-free",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "date-fns": "^1.28.5",
+    "level": "^1.7.0",
+    "node-telegram-bot-api": "^0.27.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
