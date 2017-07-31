@@ -38,11 +38,15 @@ bot.on('message', async (incoming) => {
   const userID = incoming.from.id
   const name = incoming.from.username
   const cleanChatMessage = CLEAR_CHAT_SPACE + CLEAR_CHAT_TEXT
-  const warning = await orm.get(name)
 
-  guard(new Date()) && bot.sendMessage(chatID, cleanChatMessage)
+  if (guard(new Date())) {
+    // Don't hoist for perf reasons
+    const warning = await orm.get(name)
 
-  return warning === '1'
-    ? bot.kickChatMember(chatID, userID)
-    : warn(chatID, name)
+    bot.sendMessage(chatID, cleanChatMessage)
+
+    return warning === '1'
+      ? bot.kickChatMember(chatID, userID)
+      : warn(chatID, name)
+  }
 })
